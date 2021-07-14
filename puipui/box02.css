@@ -1,0 +1,724 @@
+/**{
+    border:solid 1px black;
+}*/
+.box02{
+    width:100%;
+    height:2755px;  
+}
+    .box02_title{
+        width:100%;
+        height:50px;  
+        margin-top:5px;
+        background-color:#FFA800;
+        line-height:48px;  
+        font-size: 40px;
+        color:white;
+        font-weight: 900;
+        text-align:center;
+        box-shadow: 0 0 0 5px white;  
+    }
+    /*style01*/
+    .pui01{
+        width: 100%;
+        height:540px;
+        background-color:#F7F3CC;
+        margin-top:5px;
+        text-align: center;
+    }
+        .puibox{
+            width: 1400px;  
+            height:520px;
+            text-align: center;
+            display: inline-block;
+            vertical-align:middle;
+            margin-top:10px;
+        }
+            .pic_01{
+                width: 470px;
+                height: 470px;
+                display: inline-block;
+                vertical-align:middle;
+                margin-top:15px;
+            }
+                .pic_01 img{
+                    border-radius:50%;
+                    border-style:solid;
+                    border-width: 10px;
+                    border-color: #ffffff;
+                }
+            .right_puipui01{
+                width:560px;
+                height: 520px;
+                display: inline-block;
+                vertical-align:middle;
+                margin-left:20px;              
+            }
+                .text_01{
+                    width:560px;
+                    height: 480px;
+                    background:rgb(255, 255, 255);
+                    border-radius: 20px;
+                    padding: 10px;
+                    line-height:40px;
+                    font-size: 20px;
+                    font-weight: 900;
+                    border-radius: 50px;
+                    box-shadow:inset 0 0 0 10px #ffffff,
+                    inset 0 0 0 20px #FFA800; 
+                    text-align: center; 
+                }
+                    .puipui_title01{
+                        width: 520px;
+                        height: 60px;
+                        line-height:50px;
+                        margin-top:20px;
+                        margin-left:20px;
+                        border-bottom-style:solid;
+                        border-width: 4px;
+                        border-color: #000000;
+                        font-size: 50px;
+                        font-weight: 900;
+                    }
+                    .puipui_text01{
+                        width:520px;
+                        height: auto;
+                        margin-left:20px; 
+                        margin-top:10px; 
+                        line-height:45px; 
+                        text-align:justify;
+                        font-size: 30px;
+                        font-weight: 900;
+                    }
+    
+    /*style02*/
+    .pui02{
+        width: 100%;
+        height:540px;
+        background-color:#ffffff;
+        text-align: center;
+    }
+        .pic_02{
+            width: 470px;
+            height: 470px;
+            display: inline-block;
+            vertical-align:middle;
+            margin-top:-15px;  
+        }
+            .pic_02 img{
+                border-radius:50%;
+                border-style:solid;
+                border-width: 10px;
+                border-color: #FFA800;
+            }
+        .right_puipui02{
+            width:560px;
+            height: 520px;
+            display: inline-block;
+            vertical-align:middle;
+            margin-left:40px;
+        }
+            .text_02{
+                width:560px;
+                height: 480px;
+                margin-top:10px;
+                background:#FFA800;
+                border-radius: 20px;
+                padding: 10px;
+                line-height:40px; 
+                font-size: 20px;
+                font-weight: 900;
+                border-radius: 50px;
+                box-shadow:inset 0 0 0 10px#FFA800,
+                inset 0 0 0 20px #F7F3CC;
+                text-align: center; 
+            }
+                .puipui_title02{
+                    width: 520px;
+                    height: 60px;
+                    line-height:50px;
+                    margin-top:20px;
+                    margin-left:20px; 
+                    border-bottom-style:solid;
+                    border-width: 4px;
+                    border-color: #ffffff;
+                    font-size: 50px;
+                    font-weight: 900;
+                    color: #ffffff;
+                }
+                .puipui_text02{
+                    width:520px;
+                    height: auto;
+                    margin-left:20px; 
+                    margin-top:10px; 
+                    line-height:45px; 
+                    text-align:justify;
+                    font-size: 30px;
+                    font-weight: 900;
+                    color: #ffffff;
+                }             
+    .pui03{
+        width: 100%;
+        height:540px;
+        background-color:#F7F3CC;
+        text-align: center;
+    }
+    .pui04{
+        width: 100%;
+        height:540px;
+        background-color:#ffffff;
+        text-align: center;
+    }
+    .pui05{
+        width: 100%;
+        height:540px;
+        background-color:#F7F3CC;
+        text-align: center;
+    }
+    
+    @media (min-width: 1200px) {
+        .box02{
+            width:100%;
+            height:2755px;     
+        }
+            .box02_title{
+                width:100%;
+                height:50px;
+                margin-top:5px;  
+                line-height:50px;  
+                font-size: 40px;
+                box-shadow: 0 0 0 5px white;  
+            }
+            /*style01*/
+            .pui01{
+                width: 100%;
+                height:540px;
+                margin-top:5px;
+            }
+                .puibox{
+                    width: 1200px;  
+                    height:520px;
+                    margin-top:10px;
+                }
+                .pic_01{
+                    width: 470px;
+                    height: 470px;
+                    margin-bottom:30px; 
+                }
+                .right_puipui01{
+                    width:580px;
+                    height: 520px;
+                    margin-left:40px;              
+                }
+                    .text_01{
+                        width:560px;
+                        height: 480px;
+                        line-height:40px;
+                        font-size: 20px;
+                        margin-top:10px;
+                        box-shadow:inset 0 0 0 10px #ffffff,
+                        inset 0 0 0 20px #FFA800;  
+                    }
+                        .puipui_title01{
+                            width: 520px;
+                            height: 60px;
+                            line-height:50px;
+                            margin-top:25px;
+                            margin-left:20px;
+                            border-width: 4px;
+                            font-size: 50px;
+                        }
+                        .puipui_text01{
+                            width:510px;
+                            margin-left:25px; 
+                            margin-top:10px; 
+                            line-height:45px; 
+                            font-size: 30px;
+                        }
+            /*style02*/
+            .pui02{
+                width: 100%;
+                height:540px;
+            }
+                .pic_02{
+                    width: 470px;
+                    height: 470px;
+                    margin-top:-15px; 
+                }
+                .right_puipui02{
+                    width:560px;
+                    height: 520px;
+                    margin-left:40px;              
+                }
+                    .text_02{
+                        width:560px;
+                        height: 480px;
+                        line-height:40px;
+                        font-size: 20px;
+                        margin-top:10px;
+                        box-shadow:inset 0 0 0 10px#FFA800,
+                        inset 0 0 0 20px #F7F3CC; 
+                    }
+                        .puipui_title02{
+                            width: 520px;
+                            height: 60px;
+                            line-height:50px;
+                            margin-top:20px;
+                            margin-left:20px;
+                            border-width: 4px;
+                            font-size: 50px;
+                        }
+                        .puipui_text02{
+                            width:520px;
+                            margin-left:20px; 
+                            margin-top:10px; 
+                            line-height:45px; 
+                            font-size: 30px;
+                        }
+            .pui03, .pui04, .pui05{
+                width: 100%;
+                height:540px;
+                }
+    }
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+        .box02{
+            width:100%;
+            height:2155px;      
+        }
+            .box02_title{
+                width:100%;
+                height:50px;
+                margin-top:5px;  
+                line-height:50px;  
+                font-size: 35px;
+                box-shadow: 0 0 0 5px white;  
+            }
+            /*style01*/
+            .pui01{
+                width: 100%;
+                height:420px;
+                margin-top:5px;
+            }
+                .puibox{
+                    width: 992px; 
+                    height:410px;
+                    margin-top:5px;
+                }
+                .pic_01{
+                    width: 350px;
+                    height: 350px;
+                    margin-bottom:30px;  
+                }
+                .right_puipui01{
+                    width:480px;
+                    height: 410px;
+                    margin-left:40px;              
+                }
+                    .text_01{
+                        width:460px;
+                        height: 380px;
+                        line-height:40px;
+                        font-size: 20px;
+                        margin-top:5px;
+                        box-shadow:inset 0 0 0 10px #ffffff,
+                        inset 0 0 0 20px #FFA800;  
+                    }
+                        .puipui_title01{
+                            width: 420px;
+                            height: 50px;
+                            line-height:45px;
+                            margin-top:20px;
+                            margin-left:20px;
+                            border-width: 4px;
+                            font-size: 45px;
+                        }
+                        .puipui_text01{
+                            width:420px;
+                            margin-left:20px; 
+                            margin-top:10px; 
+                            line-height:40px; 
+                            font-size: 23px;
+                        }
+            /*style02*/
+            .pui02{
+                width: 100%;
+                height:420px;
+            }
+                .pic_02{
+                    width: 350px;
+                    height: 350px;
+                    margin-top:-15px; 
+                }
+                .right_puipui02{
+                    width:480px;
+                    height: 410px;
+                    margin-left:40px;              
+                }
+                    .text_02{
+                        width:460px;
+                        height: 380px;
+                        line-height:40px;
+                        font-size: 20px;
+                        margin-top:5px;
+                        box-shadow:inset 0 0 0 10px#FFA800,
+                        inset 0 0 0 20px #F7F3CC; 
+                    }
+                        .puipui_title02{
+                            width: 420px;
+                            height: 50px;
+                            line-height:45px;
+                            margin-top:20px;
+                            margin-left:20px;
+                            border-width: 4px;
+                            font-size: 45px;
+                        }
+                        .puipui_text02{
+                            width:420px;
+                            margin-left:20px; 
+                            margin-top:10px; 
+                            line-height:40px; 
+                            font-size: 23px;
+                        }
+            .pui03, .pui04, .pui05{
+                width: 100%;
+                height:420px;
+            }
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        .box02{
+            width:100%;
+            height:1745px;  
+        }
+            .box02_title{
+                width:100%;
+                height:40px;
+                margin-top:5px;  
+                line-height:40px;  
+                font-size: 30px;
+                box-shadow: 0 0 0 5px white;  
+            }
+            /*style01*/
+            .pui01{
+                width: 100%;
+                height:340px;
+                margin-top:5px;
+            }
+                .puibox{
+                    width: 768px; 
+                    height:320px;
+                    margin-top:10px;
+                }
+                    .pic_01{
+                        width: 300px;
+                        height: 300px;
+                        margin-top:-10px;  
+                    }
+                        .pic_01 img{
+                            border-width: 5px;
+                        }
+                    .right_puipui01{
+                        width:360px;
+                        height: 320px;
+                        margin-left:20px;              
+                    }
+                        .text_01{
+                            width:340px;
+                            height: 290px;
+                            line-height:40px;
+                            font-size: 20px;
+                            margin-top:5px;
+                            border-radius: 20px;
+                            box-shadow:inset 0 0 0 5px #ffffff,
+                            inset 0 0 0 10px #FFA800;  
+                        }
+                        .puipui_title01{
+                            width: 320px;
+                            height: 45px;
+                            line-height:40px;
+                            margin-top:5px;
+                            margin-left:10px;
+                            border-width: 3px;
+                            font-size: 40px;
+                        }
+                        .puipui_text01{
+                            width:320px;
+                            margin-left:10px; 
+                            margin-top:2px; 
+                            line-height:30px; 
+                            font-size: 20px;
+                        }
+            /*style02*/
+            .pui02{
+                width: 100%;
+                height:340px;
+            }
+                .pic_02{
+                    width: 300px;
+                    height: 300px;
+                    margin-top:-15px; 
+                }
+                    .pic_02 img{
+                        border-width: 5px;
+                    }
+                .right_puipui02{
+                    width:360px;
+                    height: 320px;
+                    margin-left:20px;              
+                }
+                    .text_02{
+                        width:340px;
+                        height: 290px;
+                        line-height:40px;
+                        font-size: 20px;
+                        margin-top:5px;
+                        border-radius: 20px;
+                        box-shadow:inset 0 0 0 5px#FFA800,
+                        inset 0 0 0 10px #F7F3CC; 
+                    }
+                        .puipui_title02{
+                            width: 320px;
+                            height: 45px;
+                            line-height:40px;
+                            margin-top:5px;
+                            margin-left:10px;
+                            border-width: 3px;
+                            font-size: 40px;
+                        }
+                        .puipui_text02{
+                            width:320px;
+                            margin-left:10px; 
+                            margin-top:2px; 
+                            line-height:30px; 
+                            font-size: 20px;
+                        }
+            .pui03, .pui04, .pui05{
+                width: 100%;
+                height:340px;
+            }
+    }
+    @media (min-width: 576px) and (max-width: 767.98px) {
+        .box02{
+            width:100%;
+            height:2745px;   
+        }
+            .box02_title{
+                width:100%;
+                height:40px;
+                margin-top:3px;  
+                line-height:40px;  
+                font-size: 30px;
+                box-shadow: 0 0 0 3px white;  
+            }
+            /*style01*/
+            .pui01{
+                width: 100%;
+                height:540px;
+                margin-top:5px;
+            }
+                .puibox{
+                    width: 576px; 
+                    height:520px;
+                    margin-top:10px;
+                }
+                    .pic_01{
+                        width: 300px;
+                        height: 300px;
+                        margin-top:5px; 
+                    }
+                        .pic_01 img{
+                            border-width: 5px;
+                        }
+                    .right_puipui01{
+                        width:500px;
+                        height: 200px;
+                        margin-top:15px;
+                        margin-left:0px;              
+                    }
+                        .text_01{
+                            width:480px;
+                            height: 170px;
+                            line-height:40px;
+                            font-size: 20px;
+                            margin-top:5px;
+                            border-radius: 30px;
+                            box-shadow:inset 0 0 0 5px #ffffff,
+                            inset 0 0 0 10px #FFA800;  
+                        }
+                        .puipui_title01{
+                            width: 460px;
+                            height: 32px;
+                            line-height:30px;
+                            margin-top:5px;
+                            margin-left:10px;
+                            border-width: 2px;
+                            font-size: 30px;
+                        }
+                        .puipui_text01{
+                            width:460px;
+                            margin-left:10px; 
+                            margin-top:5px; 
+                            line-height:25px; 
+                            font-size: 17px;
+                        }
+            /*style02*/
+            .pui02{
+                width: 100%;
+                height:540px;
+            }
+                .pic_02{
+                    width: 300px;
+                    height: 300px;
+                    margin-top:5px; 
+                }
+                    .pic_02 img{
+                        border-width: 5px;
+                    }
+                .right_puipui02{
+                    width:500px;
+                    height: 200px;
+                    margin-top:15px;
+                    margin-left:0px;              
+                }
+                    .text_02{
+                        width:480px;
+                        height: 170px;
+                        line-height:40px;
+                        font-size: 20px;
+                        margin-top:5px;
+                        border-radius: 30px;
+                        box-shadow:inset 0 0 0 5px#FFA800,
+                        inset 0 0 0 10px #F7F3CC; 
+                    }
+                        .puipui_title02{
+                            width: 460px;
+                            height: 32px;
+                            line-height:30px;
+                            margin-top:5px;
+                            margin-left:10px;
+                            border-width: 2px;
+                            font-size: 30px;
+                        }
+                        .puipui_text02{
+                            width:460px;
+                            margin-left:10px; 
+                            margin-top:5px; 
+                            line-height:25px; 
+                            font-size: 17px;
+                        }
+                .pui03, .pui04, .pui05{
+                    width: 100%;
+                    height:540px;
+                }
+    }
+    @media (max-width: 575.98px){
+        .box02{
+            width:100%;
+            height:2435px;   
+        }
+            .box02_title{
+                width:100%;
+                height:35px;
+                margin-top:3px;  
+                line-height:35px;  
+                font-size: 25px;
+                box-shadow: 0 0 0 3px white;  
+            }
+            .pui01{
+                width: 100%;
+                height:480px;
+                margin-top:3px;
+            }
+                .puibox{
+                    width: 380px; 
+                    height:465px;
+                    margin-top:7.5px;
+                }               
+                    .pic_01{
+                        width: 250px;
+                        height: 250px;
+                        margin-top:0px;  
+                    }
+                        .pic_01 img{
+                            border-width: 5px;
+                        }
+                    .right_puipui01{
+                        width:350px;
+                        height: 200px;
+                        margin-top:15px;
+                        margin-left:0px;              
+                    }
+                        .text_01{
+                            width:330px;
+                            height: 170px;
+                            line-height:40px;
+                            font-size: 20px;
+                            margin-top:5px;
+                            border-radius: 20px;
+                            box-shadow:inset 0 0 0 5px #ffffff,
+                            inset 0 0 0 10px #FFA800;  
+                        }
+                        .puipui_title01{
+                            width: 310px;
+                            height: 28px;
+                            line-height:25px;
+                            margin-top:5px;
+                            margin-left:10px;
+                            border-width: 2px;
+                            font-size: 25px;
+                        }
+                        .puipui_text01{
+                            width:310px;
+                            margin-left:10px; 
+                            margin-top:3px; 
+                            line-height:20px; 
+                            font-size: 14px;
+                        }
+            /*style02*/
+            .pui02{
+                width: 100%;
+                height:480px;
+            }
+                .pic_02{
+                    width: 250px;
+                    height: 250px;
+                    margin-top:0px; 
+                }
+                    .pic_02 img{
+                        border-width: 5px;
+                    }
+                .right_puipui02{
+                    width:350px;
+                    height: 200px;
+                    margin-top:15px;
+                    margin-left:0px;              
+                }
+                    .text_02{
+                        width:330px;
+                        height: 170px;
+                        line-height:40px;
+                        font-size: 20px;
+                        margin-top:5px;
+                        border-radius: 20px;
+                        box-shadow:inset 0 0 0 5px#FFA800,
+                        inset 0 0 0 10px #F7F3CC; 
+                    }
+                        .puipui_title02{
+                            width: 310px;
+                            height: 28px;
+                            line-height:25px;
+                            margin-top:5px;
+                            margin-left:10px;
+                            border-width: 2px;
+                            font-size: 25px;
+                        }
+                        .puipui_text02{
+                            width:310px;
+                            margin-left:10px; 
+                            margin-top:3px; 
+                            line-height:20px; 
+                            font-size: 14px;
+                        }  
+                .pui03, .pui04, .pui05{
+                    width: 100%;
+                    height:480px;
+                }         
+    }

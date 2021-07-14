@@ -1,0 +1,426 @@
+.box03{
+    width:100%;
+    height:555px;
+    background-color:#F7F3CC;
+}
+    .box03_title{
+        width:100%;
+        height:50px;  
+        background-color:#FFA800;
+        margin-top:5px;
+        line-height:48px;   
+        font-size: 40px;
+        color:white;
+        font-weight: 900;
+        text-align:center;
+        box-shadow: 0 0 0 5px white; 
+    }
+    .big_box{
+        width:100%;
+        height:460px;  
+        margin-top:25px;
+        text-align: center;
+    }
+        .leftbtn{
+            width:70px;
+            height:70px;
+            cursor: pointer;  
+            position: absolute; 
+            z-index: 2; 
+            top: 3680px; 
+            left: 0px;
+        }
+        #container{
+            width:1072px;
+            height:460px;  
+            overflow:hidden;  
+            position:relative;
+            margin:0 auto;
+        }
+            #list{
+                width: 5500px;
+                height:460px;
+                position: absolute;
+                z-index: 1;
+                left:-1072px;
+            }
+            .box{
+                width:350px;
+                height:460px;  
+                background-color:#ffffff;
+                border-radius:25px;
+                box-shadow:inset 0 0 0 5px#FFA800,
+                inset 0 0 0 10px #ffffff; 
+                margin-top:0px;
+                margin-left:10px;
+                float:left;    
+            }       
+            #first{
+                margin-left:1.5px;    
+            }
+                .box img{
+                    width:340px;
+                    height:200px;  
+                    margin:5px;
+                    margin-top:5px;
+                    border-radius:20px;  
+                }  
+                span{
+                    font-size:24px;
+                    font-weight:bolder;   
+                    margin-top:5px; 
+                }
+                hr{
+                    width:335px;
+                    border: 1px solid black;
+                    background-color: black;
+                    margin-top:3px;
+                }
+                p{
+                    font-size:18px; 
+                    text-align:justify;
+                    margin:14px; 
+                }
+        .rightbtn{
+            width:70px;
+            height:70px;
+            right: 0px;
+            cursor: pointer;  
+            position: absolute; 
+            z-index: 2; 
+            top: 3680px; 
+        }
+        
+        @media (min-width: 1200px) { 
+            .box03_title{
+                width:100%;
+                height:50px;
+                margin-top:5px;  
+                line-height:50px;  
+                font-size: 40px;
+                box-shadow: 0 0 0 5px white;  
+            }
+            .big_box{
+                width:100%;
+                height:460px;  
+                margin-top:25px;
+            }
+            .big_box{
+                width:100%;
+                height:460px;  
+                margin-top:25px;
+                text-align: center;
+            }
+                .leftbtn, .rightbtn{
+                    width:70px;
+                    height:70px;
+                    top: 3680px;
+                }
+                #container{
+                    width:1072px;
+                    height:460px;  
+                }
+                    #list{
+                        width: 5500px;
+                        height:460px;
+                    }
+                        .box{
+                            width:350px;
+                            height:460px;  
+                            border-radius:25px;
+                            box-shadow:inset 0 0 0 5px#FFA800,
+                            inset 0 0 0 10px #ffffff; 
+                            margin-top:0px;
+                            margin-left:10px;   
+                        }       
+                        #first01{
+                            margin-left:1.5px;    
+                        }
+                        #first{
+                            margin-left:1.5px;
+                        }
+                            .box img{
+                                width:340px;
+                                height:200px;  
+                                margin:5px;
+                                margin-top:5px;
+                                border-radius:20px;  
+                            }  
+                            span{
+                                font-size:24px;  
+                                margin-top:5px; 
+                            }
+                            hr{
+                                width:335px;
+                                border: 1px solid black;
+                                margin-top:3px;
+                            }
+                            p{
+                                font-size:18px; 
+                                margin:14px; 
+                            }
+        }
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .box03_title{
+                width:100%;
+                height:50px;
+                margin-top:5px;  
+                line-height:50px;  
+                font-size: 35px;
+                box-shadow: 0 0 0 5px white;  
+            }
+            .big_box{
+                width:100%;
+                height:460px;  
+                margin-top:25px;
+            }
+                .leftbtn, .rightbtn{
+                    width:60px;
+                    height:60px;
+                    top: 2950px;
+                }
+                #container{
+                    width:900px;
+                    height:460px;  
+                }
+                    #list{
+                        width: 5500px;
+                        height:460px;
+                    }
+                        .box{
+                            width:295px;
+                            height:460px;  
+                            border-radius:25px;
+                            box-shadow:inset 0 0 0 5px#FFA800,
+                            inset 0 0 0 10px #ffffff; 
+                            margin-top:0px;
+                            margin-left:5px;   
+                        }       
+                        #first01{
+                            margin-left:90px;
+                        }
+                        #first{
+                            margin-left:177px;
+                        }
+                            .box img{
+                                width:285px;
+                                height:auto;  
+                                margin:5px;
+                                margin-top:5px;
+                                border-radius:20px;  
+                            }  
+                            span{
+                                font-size:24px;  
+                                margin-top:5px; 
+                            }
+                            hr{
+                                width:280px;
+                                border: 1px solid black;
+                                margin-top:3px;
+                            }
+                            p{
+                                font-size:18px; 
+                                margin:14px; 
+                            }
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .box03{
+                width:100%;
+                height:445px;
+            }
+            .box03_title{
+                width:100%;
+                height:40px;
+                margin-top:5px;  
+                line-height:40px;  
+                font-size: 30px;
+                box-shadow: 0 0 0 5px white;  
+            }
+            .big_box{
+                width:100%;
+                height:380px;  
+                margin-top:15px;
+            }
+                .leftbtn, .rightbtn{
+                    width:50px;
+                    height:50px;
+                    top: 2450px;
+                }
+                #container{
+                    width:700px;
+                    height:380px;  
+                }
+                    #list{
+                        width: 5500px;
+                        height:380px;
+                    }
+                        .box{
+                            width:230px;
+                            height:380px;  
+                            border-radius:25px;
+                            box-shadow:inset 0 0 0 2.5px#FFA800,
+                            inset 0 0 0 5px #ffffff; 
+                            margin-top:0px;
+                            margin-left:5px;   
+                        }       
+                        #first01{
+                            margin-left:186px;    
+                        }
+                        #first{
+                           margin-left:372px;
+                        }
+                            .box img{
+                                width:225px;
+                                height:auto;  
+                                margin:2.5px;
+                                margin-top:2.5px;
+                                border-radius:22.5px;  
+                            }  
+                            span{
+                                font-size:20px;  
+                                margin-top:5px; 
+                            }
+                            hr{
+                                width:220px;
+                                border: 0.5px solid black;
+                                margin-top:3px;
+                            }
+                            p{
+                                font-size:16px; 
+                                margin:12px; 
+                            }
+        }
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .box03{
+                width:100%;
+                height:390px;
+            }
+            .box03_title{
+                width:100%;
+                height:40px;
+                margin-top:3px;  
+                line-height:40px;  
+                font-size: 30px;
+                box-shadow: 0 0 0 3px white;  
+            }
+            .big_box{
+                width:100%;
+                height:330px;  
+                margin-top:10px;
+            }
+                .leftbtn, .rightbtn{
+                    width:40px;
+                    height:40px;
+                    top: 3570px;
+                }
+                #container{
+                    width:520px;
+                    height:330px;  
+                }
+                    #list{
+                        width: 5500px;
+                        height:330px;
+                    }
+                        .box{
+                            width:172px;
+                            height:330px;  
+                            border-radius:15px;
+                            box-shadow:inset 0 0 0 2.5px#FFA800,
+                            inset 0 0 0 5px #ffffff; 
+                            margin-top:0px;
+                            margin-left:2px;   
+                        }       
+                        #first01{
+                            margin-left:276px;    
+                        }
+                        #first{
+                           margin-left:552px;
+                        }
+                            .box img{
+                                width:168px;
+                                height:auto;  
+                                margin:2.5px;
+                                margin-top:2.5px;
+                                border-radius:12.5px;  
+                            }  
+                            span{
+                                font-size:16px;  
+                                margin-top:5px; 
+                            }
+                            hr{
+                                width:162px;
+                                border: 0.5px solid black;
+                                margin-top:3px;
+                            }
+                            p{
+                                font-size:14px; 
+                                margin:10px; 
+                            }
+        }
+        @media (max-width: 575.98px){
+            .box03{
+                width:100%;
+                height:345px;
+            }
+            .box03_title{
+                width:100%;
+                height:35px;
+                margin-top:3px;  
+                line-height:35px;  
+                font-size: 25px;
+                box-shadow: 0 0 0 3px white;  
+            }
+            .big_box{
+                width:100%;
+                height:300px;  
+                margin-top:5px;
+            }
+                .leftbtn, .rightbtn{
+                    width:30px;
+                    height:30px;
+                    top: 3140px;
+                }
+                #container{
+                    width:340px;
+                    height:300px;  
+                }
+                    #list{
+                        width: 5500px;
+                        height:300px;
+                    }
+                        .box{
+                            width:112px;
+                            height:300px;  
+                            border-radius:15px;
+                            box-shadow:inset 0 0 0 2.5px#FFA800,
+                            inset 0 0 0 5px #ffffff; 
+                            margin-top:0px;
+                            margin-left:1px;   
+                        }       
+                        #first01{
+                            margin-left:367px;    
+                        }
+                        #first{
+                           margin-left:734px;
+                        }
+                            .box img{
+                                width:108px;
+                                height:auto;  
+                                margin:2.5px;
+                                margin-top:2.5px;
+                                border-radius:12.5px;  
+                            }  
+                            span{
+                                font-size:12px;  
+                                margin-top:5px; 
+                            }
+                            hr{
+                                width:103px;
+                                border: 0.5px solid black;
+                                margin-top:3px;
+                            }
+                            p{
+                                font-size:8px; 
+                                margin:10px; 
+                            }
+        }
