@@ -1,0 +1,30 @@
+<html>
+    <head>   
+        <style >
+            html,body{
+                margin:0px;
+                text-align:center;
+            }
+            h1{
+                font-weight: bold;
+                font-size:80px;  
+            }
+            #abc{
+                font-size:80px;
+                display: inline-block;
+                justify-content: center;
+            }
+        </style>
+
+        <script>    
+            var a = document.getElementsByClassName('abc');
+            a = Math.random();
+            a = a.toFixed(4);
+            document.write("<h1 id='title'>您的隨機碼為</h1>"); 
+            document.write("<p id='abc'>"+a+"</p>");     
+        </script>
+    </head>
+    <body >
+        
+    </body>
+</html>
