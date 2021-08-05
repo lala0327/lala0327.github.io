@@ -1,0 +1,65 @@
+<html>
+    <head>   
+        <style >
+            html,body{
+                width: 100%;
+                margin:0px;
+                background-color: #427AA1;   
+                display: flex;
+                justify-content: center; 
+                align-items: center;  
+            }
+            .outside_border{
+                width:1350px;
+                height: 600px;
+                border:10px solid white;
+                border-radius: 30px;    
+                background-color: #fff;  
+                text-align: center;         
+            }
+                #title{
+                    margin:0px; 
+                    text-align: center;
+                    font-size: 100px;
+                    color:#05668D;
+                    font-weight:bold;
+                    font-family: "Segoe UI";
+                }
+                #family{
+                    font-family: "Segoe UI";
+                }
+                button{
+                        width:300px;
+                        height:80px;
+                        margin:17px;
+                        border-radius: 15px;
+                        font-family: "Segoe UI";
+                        font-size:30px;
+                        letter-spacing:1px;
+                        color:white;
+                        font-weight: bold;     
+                        padding: 15px 25px; 
+                        background-color: #427AA1; 
+                        box-shadow: 0 9px #999;
+                        cursor: pointer; 
+                    }
+                    button:hover{
+                        background-color: #05668D;     
+                    }                
+                    button:active {
+                        background-color: #05668D;
+                        box-shadow: 0 5px #666;
+                        transform: translateY(4px);
+                    }
+        </style>    
+    </head>
+    <body>
+        <div class="outside_border">
+            <p id="title">Welcome</p>
+            <button id = 01 onclick="location.href='https://lala0327.github.io/school/one_random.html'">抽取一個隨機數</button><br>
+            <button id = 01 onclick="location.href='https://lala0327.github.io/school/uniform.html'">均勻分布</button><br>
+            <button id = 02 onclick="location.href='https://lala0327.github.io/school/standard_normal.html'">一般標準常態</button><br>
+            <button id = 03 onclick="location.href='https://lala0327.github.io/school/normal.html'">一般常態</button><br>
+        </div>
+    </body>
+</html>
