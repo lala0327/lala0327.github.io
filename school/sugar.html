@@ -161,9 +161,9 @@
             var day=document.getElementById("day");
             var l=document.getElementById("long");
             var s=document.getElementById("shortnum");
-            day.innerHTML ="建議每日總劑量為：" + total.toFixed(2) + " U / 每日";
-            l.innerHTML ="長效型胰島素劑量約為：" + (total*0.5*sugarnum).toFixed(2) + " U / 每日";
-            s.innerHTML ="短效型胰島素劑量約為：" + answer.toFixed(2) + " U / 每次";
+            day.innerHTML ="建議每日總劑量為：" + total.toFixed(0) + " U / 每日";
+            l.innerHTML ="長效型胰島素劑量約為：" + (total*0.5*sugarnum).toFixed(0) + " U / 每日";
+            s.innerHTML ="短效型胰島素劑量約為：" + answer.toFixed(0) + " U / 每次";
         }
         //enter event
         function Enter01(){ 
