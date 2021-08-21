@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        
+        <style>
+            html,.body{
+                width:100%;
+                margin:0px auto;
+                text-align: center;
+            }
+            .control{
+                width:500px;
+                height:200px;
+                background-color: rgb(255, 163, 163);
+                display: inline-block;
+                vertical-align: middle;
+                margin-bottom:20px;
+            }
+            .card{
+                font-size: 18px; 
+                margin:50px;
+            }
+                .state{
+                    height:70px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    line-height: 20px;
+                    margin-left:10px;
+                }
+        </style>
+    </head>
+    <body>       
+        <div id="app">
+            <div class="control">
+                <div class="cgostate">
+                    您的起始站為：
+                    <select v-model="gosed" id="go">
+                        <option v-for="(gostate,goid) in gostates" :value="goid">{{gostate}}{{goid}}</option>
+                    </select> 
+                </div>
+                <div class="ctostate">
+                    您的終點站為：
+                    <select v-model="tosed" id="to">
+                        <option v-for="(tostate,toid) in tostates" :value="toid">{{tostate}}{{toid}}</option>
+                    </select>
+                </div>
+            </div>
+            <div v-for="data in info">
+                <div class="card" v-for="stopstate in data.StopTimes" v-if="stopstate.StationName.Zh_tw==gostates[gosed]">
+                    <div v-for="stopstate in data.StopTimes" v-if="stopstate.StationName.Zh_tw==tostates[tosed]">
+                    <!--判斷南下-->
+                    <div v-if="(data.DailyTrainInfo.Direction==0)&(tosed<(11-gosed))">
+                        <div class="state">車次<br>{{data.DailyTrainInfo.TrainNo}}</div>
+                        <div class="state" v-for="stop in data.StopTimes">{{stop.StopSequence}}<br>
+                            {{stop.StationName.Zh_tw}}<br>{{stop.ArrivalTime}}<br>{{stop.DepartureTime}}</div>
+                        <div class="state">
+                            出發時間
+                            <div id="a" v-for="stop in data.StopTimes" v-if="stop.StationName.Zh_tw==gostates[gosed]">
+                                {{stop.DepartureTime}}
+                            </div> 
+                        </div>
+                        <div class="state" v-for="stop in data.StopTimes" v-if="stop.StationName.Zh_tw==tostates[tosed]">   
+                            抵達時間<br>{{stop.ArrivalTime}}    
+                        </div>
+                        <div class="state">方向<br>南下</div>
+                        <div class="statego" v-for="stop in data.StopTimes" v-if="stop.StationName.Zh_tw==gostates[gosed]">
+                            <div class="a">{{gettime()}}</div>
+                        </div>               
+                        <hr> 
+                    </div>
+                    <!--判斷北上-->
+                    <div v-if="(data.DailyTrainInfo.Direction==1)&(tosed>(11-gosed))">
+                        <div class="state">車次<br>{{data.DailyTrainInfo.TrainNo}}</div>
+                        <div class="state" v-for="stop in data.StopTimes">{{stop.StopSequence}}<br>
+                            {{stop.StationName.Zh_tw}}<br>{{stop.ArrivalTime}}<br>{{stop.DepartureTime}}</div>
+                        <div class="state" v-for="stop in data.StopTimes" v-if="stop.StationName.Zh_tw==gostates[gosed]">
+                            出發時間<br>{{stop.DepartureTime}}
+                        </div>
+                        <div class="state" v-for="stop in data.StopTimes" v-if="stop.StationName.Zh_tw==tostates[tosed]">   
+                            抵達時間<br>{{stop.ArrivalTime}}    
+                        </div>
+                        <div class="state">方向<br>北上</div>
+                        <hr>
+                    </div>
+                    </div>
+                </div>                   
+            </div>
+        </div>    
+    </body>
+    <script>
+        new Vue({
+            el: '#app',
+            data () {   
+                return {
+                    info: null,
+                    gosed:0,
+                    tosed:0,
+                    gostates: ["南港","台北","板橋","桃園","新竹","苗栗","台中","彰化","雲林","嘉義","台南","左營"], 
+                    tostates: ["左營","台南","嘉義","雲林","彰化","台中","苗栗","新竹","桃園","板橋","台北","南港"], 
+                }
+            },
+            mounted () {
+                    axios
+                    .get('https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/DailyTimetable/Today?$format=JSON')
+                    .then(response => this.info = response.data)
+                },
+            methods:{         
+                gettime(){ 
+                    var goid = document.getElementById("go").value;
+                    var govalue = this.gostates[goid];   
+                    var gova = document.getElementById("a");                   
+                    //return(gova)     
+                    for(i=0;i<=this.info.length-1;i++){      
+                        for(j=0;j<=this.info[i].StopTimes.length-1;j++){                           
+                            return(this.info[i].StopTimes[j].StopSequence)                                    
+                        }
+                    }
+                    
+                }
+            }
+        })
+    </script>
+</html>
