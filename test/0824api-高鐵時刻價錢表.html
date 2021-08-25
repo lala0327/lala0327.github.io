@@ -1,0 +1,291 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <style>
+            html,body{
+                margin:0 auto;
+                text-align: center;
+                font-size: 26px;
+                font-weight: bold;
+                font-family: "微軟正黑體"; 
+                background-color:#caf0f8;
+            }
+            h1{
+                font-size:40px;
+                margin-top:10px;
+                margin-bottom:0px;
+            }
+            .control{
+                display:inline-block;
+                width:600px;
+                background-color:#90e0ef;
+                margin:20px;
+                padding:10px;
+                border-radius: 15px; 
+                border: 10px solid #fff; 
+                box-shadow: 0 0 0 10px #90e0ef;
+            }
+                .station,#btn{
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                #btn{
+                    width:80px;
+                    height:80px;
+                    margin-left:10px;
+                    margin-top:5px;
+                    border-radius: 15px;
+                    letter-spacing:1px;
+                    color:white;
+                    font-weight: bold;     
+                    padding: 2px 5px; 
+                    background-color: #0096c7; 
+                    box-shadow: 0 5px #999;
+                    cursor: pointer;
+                    font-size: 26px;
+                    font-family: "微軟正黑體";
+                }
+                    #btn:hover{
+                        background-color: #05668D;     
+                    }                
+                    #btn:active {
+                        background-color: #05668D;
+                        box-shadow: 0 3px #666;
+                        transform: translateY(4px);
+                    }
+                    .controlstartstation,.controlendstation{
+                        margin-top:10px;
+                    }
+                    select{
+                        font-size: 26px;
+                        font-weight: bold;
+                        font-family: "微軟正黑體";
+                    }
+                .ticket{
+                    margin-top:10px;
+                }
+                    .controlticket,.controlticketprice{
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    .controlticketprice{
+                        color:red;
+                    }
+                .controltime{
+                    margin:10px;
+                } 
+            .cards{
+                margin:0px;
+            }
+                .card{
+                    width:800px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin:10px;
+                    background-color:#fff;
+                    border-radius: 15px;
+                    border: 10px solid #90e0ef;
+                }    
+                .state{
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding: 10px;
+                    margin-left:35px;
+                }
+                #one{
+                    margin-left:10px;
+                }
+        </style>
+    </head>
+    <body>  
+        <h1>當日高鐵車次與各車種價位查詢</h1>     
+        <div id="app">
+            <div class="control">
+                <div class="station">
+                    <div class="controlstartstation">
+                        您的起始站為：
+                        <select v-model="startmodel">
+                            <option v-for="(startstation,startstationid) in startstations" :value="startstationid">{{startstation}}</option>
+                        </select> 
+                    </div>
+                    <div class="controlendstation">
+                        您的到達站為：
+                        <select v-model="endmodel">
+                            <option v-for="(endstation,endstationid) in endstations" :value="endstationid">{{endstation}}</option>
+                        </select>
+                    </div>
+                    <div v-for="stationid in stationid">          
+                        <div v-if="startstations[startmodel]==stationid.StationName.Zh_tw">
+                            {{GetStartStationID(stationid)}}    
+                        </div>
+                        <div v-if="endstations[endmodel]==stationid.StationName.Zh_tw">
+                            {{GetEndStationID(stationid)}}    
+                        </div>
+                    </div>
+                </div>
+                <button id="btn" type="button" @click="GetStationInfo()">班表查詢</button>
+                <div class="ticket">
+                    <div class="controlticket">
+                        車票種類：
+                        <select v-model="ticketmodel">
+                            <option v-for="(ticket,ticket_type_id) in ticket_type" :value="ticket_type_id">{{ticket}}</option>
+                        </select>
+                    </div>
+                    <div class="controlticketprice" v-for="ticketprice in ticketprice">{{GetPrice(ticketprice)}}</div>
+                </div>
+                <div class="controltime">
+                    去程時刻：
+                    <select v-model="timemodel" id="controltime">                 
+                    </select>   
+                </div>    
+            </div>
+            <div class="cards" v-for="data in station_data" v-if="timemodel<=(data.OriginStopTime.DepartureTime[0]+data.OriginStopTime.DepartureTime[1])">
+                <div class="card">
+                    <div id="one" class="state">車次<br>{{data.DailyTrainInfo.TrainNo}}</div>
+                    <div class="state">出發時間<br>{{data.OriginStopTime.DepartureTime}}</div>
+                    <div class="state">抵達時間<br>{{data.DestinationStopTime.ArrivalTime}}</div>
+                    <div class="state">乘車時間<br>{{GetTime(data.OriginStopTime.DepartureTime,data.DestinationStopTime.ArrivalTime)}}</div>  
+                </div>
+            </div>
+        </div>    
+    </body>
+    <script>
+        new Vue({
+            el: '#app',
+            data () {   
+                return {
+                    stationid:[],
+                    station_data:null,
+                    ticketprice:[],
+                    startmodel:0,
+                    endmodel:0,
+                    ticketmodel:0,
+                    timemodel:"00",
+                    startstationid:0,
+                    endstationid:0,
+                    abc:"0",
+                    startstations: ["南港","台北","板橋","桃園","新竹","苗栗","台中","彰化","雲林","嘉義","台南","左營"], 
+                    endstations: ["左營","台南","嘉義","雲林","彰化","台中","苗栗","新竹","桃園","板橋","台北","南港"], 
+                    ticket_type:["商務","標準","自由"]
+                }
+            }, 
+            mounted () {
+                function stationid(){
+                    return axios.get('https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/Station?$format=JSON')
+                };  
+                function ticketprice(){
+                    return axios.get('https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/ODFare?$format=JSON')
+                };
+                Promise.all([stationid(),ticketprice()])
+                .then( (response) => {
+                    const stationid = response[0];
+                    const ticketprice = response[1];
+                    this.stationid = stationid.data
+                    this.ticketprice = ticketprice.data
+                });
+                this.CreateTimeSelect()
+            },           
+            methods:{ 
+                CreateTimeSelect(){                        
+                    var mySelect = document.getElementById("controltime");
+                    var arr=[];
+                    var num=[];  
+                        for(i=0;i<=23;i++){
+                            if(i<10){
+                                var a ="0"+i+":00"
+                                arr.push(a);
+                                num.push("0"+i);
+                            }
+                            else{
+                                var a = i+":00"
+                                arr.push(a);    
+                                num.push(i);
+                            }
+                        }
+                        for(i=0;i<=23;i++){
+                            var opt = document.createElement("option");                     
+                            var _text = document.createTextNode(arr[i]);  
+                            opt.appendChild(_text);   
+                            opt.setAttribute("value",num[i]); 
+                            mySelect.appendChild(opt); 
+                        }          
+                }, 
+                GetStartStationID(data){
+                    var id = data.StationID
+                    this.startstationid = id
+                },
+                GetEndStationID(data){
+                    var id = data.StationID
+                    this.endstationid = id
+                },
+                GetPrice(data){   
+                    if((data.OriginStationName.Zh_tw == this.startstations[this.startmodel])
+                    &(data.DestinationStationName.Zh_tw == this.endstations[this.endmodel])){
+                        if(this.ticketmodel==0){
+                            return "票價為 " + data.Fares[0].Price + " 元"    
+                        }
+                        else if(this.ticketmodel==1){
+                            return "票價為 " + data.Fares[1].Price + " 元"  
+                        }
+                        else if(this.ticketmodel==2){
+                            return "票價為 " + data.Fares[2].Price + " 元"
+                        }
+                    };
+                },
+                GetStationInfo(){
+                    var startstationid = this.startstationid
+                    var endstationid = this.endstationid
+                    //抓取目前日期
+                    var Today=new Date();
+                    var year = Today.getFullYear()
+                    var month = (Today.getMonth()+1)
+                    var date = Today.getDate()
+                    if ((Today.getMonth()+1)<10){
+                        month = "0"+(Today.getMonth()+1)
+                    }
+                    if (Today.getDate()<10){
+                        date = "0" + Today.getDate()
+                    }
+                    //抓取目前日期的車程表
+                    var api = "https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/DailyTimetable/OD/"+startstationid+"/to/"+endstationid+"/"+year+"-"+month+"-"+date+"?$format=JSON"
+                    let that = this
+                    axios({
+                        methods: 'get',
+                        url: api
+                    })
+                    .then(response => that.station_data = response.data)
+                },
+                GetTime(start,end){   
+                    let start_hr = parseInt(start[0]*10)+parseInt(start[1]);
+                    let start_min = parseInt(start[3]*10)+parseInt(start[4]);
+                    let end_hr = parseInt(end[0]*10)+parseInt(end[1]);
+                    let end_min = parseInt(end[3]*10)+parseInt(end[4]);
+                    var min = 0;
+                    var hr = 0;
+                    if(end_min<start_min){
+                        end_hr = end_hr - 1;
+                        min = parseInt(end_min) + parseInt(60) - start_min;
+                        hr = end_hr - start_hr;
+                        if(hr<10){
+                            return "0"+hr+":"+ min 
+                        }
+                        else{
+                            return hr +":"+ min    
+                        }       
+                    }
+                    else{
+                        min = parseInt(end_min) - start_min;
+                        hr = end_hr - start_hr;
+                        if(hr<10){
+                            return "0"+hr+":"+ min 
+                        }
+                        else{
+                            return hr +":"+ min    
+                        }       
+                    }                 
+                }, 
+            }
+        })
+    </script>
+</html>
