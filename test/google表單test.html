@@ -1,0 +1,192 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+        <style>
+            html,body{
+                margin:0px;
+                display: flex;
+                vertical-align: middle;
+                justify-content: center;
+                background-color: #fff8f0;
+            }
+            #white_box{
+                width: 100%;
+                height:150px;
+            }
+            #title{
+                font-size: 50px;
+            }
+            h1{
+                width:98%;
+                text-align: center;
+                margin:auto;
+                margin-top:30px;
+                margin-bottom:30px;
+                background-color: #ff8811;
+                color:white;
+                font-size: 36px;
+                letter-spacing:5px;
+                border-radius: 10px;
+            }
+            #long_box{
+                width: 100%;
+                height:210px;
+                margin-top:20px; 
+                margin-bottom:20px;
+            }
+            #little_box{
+                width:210px;
+                height:210px;
+                margin:10px;
+                margin-top:0px;
+                margin-bottom:0px;
+                background-color:#f4d06f;
+                border-radius: 10px;
+                display: inline-block;
+                justify-content: center;
+                vertical-align: middle;
+                text-align: left;
+            }
+            img{
+                /*opacity:0;*/
+                display:block;
+                margin:auto;
+                margin-top:10px;
+            }
+            #name,#price{
+                margin-top:-15px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="getdata">
+            {{group("壽司",this.arr_0)}}
+            <h1>壽司</h1>
+            <div id ="long_box" v-for="arr in arr_0">
+                <div id ="little_box" v-for="arrs in arr">
+                    <img v-bind:src="arrs[3]">
+                    <br>
+                    <div id ="name">{{arrs[1]}}</div>
+                    <br>
+                    <div id ="price">售價{{arrs[2]}}元</div>
+                </div>
+            </div> 
+            {{group("軍艦",this.arr_1)}}
+            <h1>軍艦</h1>
+            <div id ="long_box" v-for="arr in arr_1">
+                <div id ="little_box" v-for="arrs in arr">
+                    <img v-bind:src="arrs[3]">
+                    <br>
+                    <div id ="name">{{arrs[1]}}</div>
+                    <br>
+                    <div id ="price">售價{{arrs[2]}}元</div>
+                </div>
+            </div>
+            {{group("手卷",this.arr_2)}}
+            <h1>手卷</h1>
+            <div id ="long_box" v-for="arr in arr_2">
+                <div id ="little_box" v-for="arrs in arr">
+                    <img v-bind:src="arrs[3]">
+                    <br>
+                    <div id ="name">{{arrs[1]}}</div>
+                    <br>
+                    <div id ="price">售價{{arrs[2]}}元</div>
+                </div>
+            </div>
+            {{group("卷物",this.arr_3)}}
+            <h1>卷物</h1>
+            <div id ="long_box" v-for="arr in arr_3">
+                <div id ="little_box" v-for="arrs in arr">
+                    <img v-bind:src="arrs[3]">
+                    <br>
+                    <div id ="name">{{arrs[1]}}</div>
+                    <br>
+                    <div id ="price">售價{{arrs[2]}}元</div>
+                </div>
+            </div>
+            {{group("副餐",this.arr_4)}} 
+            <h1>副餐</h1>
+            <div id ="long_box" v-for="arr in arr_4">
+                <div id ="little_box" v-for="arrs in arr">
+                    <img v-bind:src="arrs[3]">
+                    <br>
+                    <div id ="name">{{arrs[1]}}</div>
+                    <br>
+                    <div id ="price">售價{{arrs[2]}}元</div>
+                </div>
+            </div>
+            {{group("甜點",this.arr_5)}}
+            <h1>甜點</h1>
+            <div id ="long_box" v-for="arr in arr_5">
+                <div id ="little_box" v-for="arrs in arr">
+                    <img v-bind:src="arrs[3]">
+                    <br>
+                    <div id ="name">{{arrs[1]}}</div>
+                    <br>
+                    <div id ="price">售價{{arrs[2]}}元</div>
+                </div>
+            </div>
+            {{group("飲料",this.arr_6)}}
+            <h1>飲料</h1>
+            <div id ="long_box" v-for="arr in arr_6">
+                <div id ="little_box" v-for="arrs in arr">
+                    <img v-bind:src="arrs[3]">
+                    <br>
+                    <div id ="name">{{arrs[1]}}</div>
+                    <br>
+                    <div id ="price">售價{{arrs[2]}}元</div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var vm_get_data = new Vue({
+                el:"#getdata",
+                data:{   
+                    sushiData:[],
+                    types:["壽司","軍艦","手卷","卷物",'副餐','甜點','飲料'],
+                    arr_0:[],
+                    arr_1:[],
+                    arr_2:[],
+                    arr_3:[],
+                    arr_4:[],
+                    arr_5:[],
+                    arr_6:[],
+                },
+                mounted(){
+                    this.getdata();  
+                },
+                methods:{
+                    getdata() {
+                        axios
+                        .get("https://sheets.googleapis.com/v4/spreadsheets/1XfY7wWkei4GL6txkLKXdwX11Lj8gHiWIoCnMPjo45Ls/values/1?alt=json&key=AIzaSyBTMYnrj8_S08CTDiUhaEv5hmfGknQmkKc")
+                        .then(i => this.sushiData = i.data.values)
+                        .catch((error) => { console.error(error) })
+                        .then(i => this.sushiData.splice(0,1))   //刪除欄位
+                        //.then(i => console.log(this.sushiData))
+                    },  
+                    group(a,b){   
+                        var arr = []                   
+                        for (var i=0;i<this.sushiData.length;i++) {
+                            if(this.sushiData[i][0]==a){
+                                arr.push(this.sushiData[i])
+                            }
+                        }
+                        let index = 0;
+                        let num = 4; // 每行幾個元素 
+                        for (let i=0; i<arr.length; i++) {
+                                index = parseInt(i/num)
+                                if (b.length <= index) {
+                                    b.push([]);
+                                }
+                                b[index][i%num] = arr[i];
+                        }                          
+                    },  
+                }
+            })
+    </script>
+</html>
