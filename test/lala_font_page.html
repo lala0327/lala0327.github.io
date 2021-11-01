@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>首頁</title>
+        
+        <style>
+            html,body{
+                    width: 100%;
+                    margin:0px auto;
+                    text-align: center;
+                    font-family: "微軟正黑體";
+                    background-color:#f8edeb;  
+            } 
+            .boxes{
+                margin: auto;
+                text-align: center;
+            }
+            .boxes::before{
+                content:'';
+                display: inline-block;
+                height: 100%;
+                width: 0;
+                vertical-align: middle;
+            }
+                #employee_box,#boss_box{
+                    width: 400px;
+                    height:400px;
+                    background-color: #ffd7ba;
+                    display: inline-block;
+                    vertical-align: middle;
+                    justify-content: center;
+                    font-size:60px;
+                    font-weight: bold;
+                    text-align:center;
+                    border-radius: 50px;
+                    line-height:100px;
+                    cursor: pointer;
+                }
+                #employee_box:hover{
+                        background-color: #fec89a;     
+                } 
+                #boss_box:hover{
+                        background-color: #fec89a;     
+                }               
+                    #employee_box:active {
+                        background-color:  #fec89a;
+                        box-shadow: 0 3px #666;
+                        transform: translateY(4px);
+                    }
+                    #boss_box:active {
+                        background-color:  #fec89a;
+                        box-shadow: 0 3px #666;
+                        transform: translateY(4px);
+                    }
+                #boss_box{
+                    margin-left:100px;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="boxes">
+            <button id="employee_box" type="button" onclick="location.href='https://lala0327.github.io/test/employee.html'">
+                員工專區
+                <img src="employee.png">
+            </button>
+            <button id="boss_box" type="button"  onclick="location.href='https://lala0327.github.io/test/boss.html'">
+                老闆專區
+                <img src="boss.png">
+            </button>
+        </div>
+    </body>
+</html>
