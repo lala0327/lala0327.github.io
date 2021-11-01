@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        html,body{
+                width: 100%;
+                margin:0px auto;
+                text-align: center;
+                font-family: "微軟正黑體";
+                background-color:#f8edeb;  
+        }
+        h1{
+            font-size:50px;
+            color:#fff;
+            background-color: #ffb5a7;
+            border-top:10px solid #fcd5ce;
+            border-bottom:10px solid #fcd5ce;
+        }
+        .btn_box{
+				width:80%;
+				display: inline-block;
+				justify-content: center; 
+				align-items: center;  
+			}
+			button{
+                border-radius: 10px;
+				font-size: 26px;
+				font-weight: bold;
+				margin:15px;
+				padding:5px 10px 5px 10px;
+				letter-spacing: 1px;
+				background-color: #ffd7ba;
+				cursor: pointer;
+			}
+			button:hover{
+                background-color: #fec89a;     
+            } 
+			button:active {
+                background-color:#fec89a;
+                box-shadow: 2px 2px #666;
+                transform: translateY(3px);
+            }
+    </style>
+<body>
+    <h1>老闆專區</h1>
+    <div class="btn_box">
+        <button id="add" onclick="add()">加值</button>
+        <button id="pay" onclick="pay()">發薪</button>
+        <button id="distribute" onclick="distribute()">分紅</button>
+        <button id="clean" onclick="clean()">重設會員清單</button>
+        <button id="kill" onclick="kill()">刪除合約</button>
+    </div>
+</body>
+</html>

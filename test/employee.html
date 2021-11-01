@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="D:\html\1026\index.js" charset="utf-8"></script>	
+		<style>
+			html,body{
+                    width: 100%;
+                    margin:0px auto;
+                    text-align: center;
+                    font-family: "微軟正黑體";
+                    background-color:#f8edeb;  
+            }
+			h1{
+				font-size:50px;
+				color:#fff;
+				background-color: #ffb5a7;
+				border-top:10px solid #fcd5ce;
+				border-bottom:10px solid #fcd5ce;
+			}
+			p{
+				font-size: 26px;
+				margin:15px;
+			}
+			.box{
+				width:80%;
+				margin:0px auto;
+				text-align: left;
+			}
+			.btn_box{
+				width:80%;
+				display: inline-block;
+				justify-content: center; 
+				align-items: center;  
+			}
+			button{
+				border-radius: 10px;
+				font-size: 26px;
+				font-weight: bold;
+				margin:15px;
+				padding:5px 10px 5px 10px;
+				letter-spacing: 1px;
+				background-color: #ffd7ba;
+				cursor: pointer;
+			}
+			button:hover{
+                background-color: #fec89a;     
+            } 
+			button:active {
+                background-color:#fec89a;
+                box-shadow: 2px 2px #666;
+                transform: translateY(3px);
+            }
+		</style>
+	</head>
+	<body>
+		<h1>員工專區</h1>
+		<div class="box">
+			<p>我的地址：<span id="my_address"></span></p>
+			<p>我的餘額：<span id="my_balance"></span></p>		
+			<hr/>		
+			<p>老闆地址：<span id="boss_address"></span></p>
+			<p>目前合約總餘額：<span id="total_balance"></span></p>
+			<p>參與地址：<span id="join_address"></span></p>
+			<p>上次發薪時間：<span id="PayTime"></span></p>
+			<p>上次分紅時間：<span id="DistributeTime"></span></p>
+			<p>上次申請紓困時間：<span id="ReliefTime"></span></p>
+		</div>
+		<div class="btn_box">
+			<button id="join" onclick="join()">加入</button>
+			<button id="retire" onclick="retire()">退休</button>
+			<!--以上的function ok--> 
+			<button id="relief" onclick="relief()">申請紓困X</button>
+			<button id="ReturnCheck" onclick="ReturnCheck()">查詢還款金額X</button>
+			<button id="Return" onclick="Return()">還款X</button>
+		</div>
+	</body>
+</html>
