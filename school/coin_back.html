@@ -18,6 +18,9 @@
                     vertical-align: middle;
                     justify-content: center;
                 }
+                form{
+                    margin:0px;
+                }
                 #head_p{
                     width:300px;
                     height: 70px;
@@ -68,13 +71,15 @@
     </head>
     <body>
         <class id="title">正面機率：<input type="number" id="head_p" placeholder="請輸入正面機率" onkeypress="Enter()"></class>
-        <br>
-        <input id="btn" type="button" value="修改" onclick="change_p()">
-        <br>
-        <class id="p_title">目前機率為<p id="p_text">0.5</p></class>
+        <form  name="test" method="get" action="file:///C:/html/%E8%B3%A3%E8%BA%AB%E7%94%A8/coin_back.html"> 
+            <input id="btn" type="button" value="修改" onclick="change_p()">
+        </form>
+        <class id="p_title">目前機率為                   
+            <p id="p_text">0.5</p>    
+        </class>
     </body>
     <script>
-        document.getElementById("head_p").focus(); 
+        document.getElementById("head_p").focus();
         //抓取修改機率
         p_change = localStorage.getItem('p');
         p_text.innerHTML=p_change; 
@@ -83,8 +88,10 @@
             var p = document.getElementById("head_p").value;
             var p_text = document.getElementById("p_text");
             if(p==null||p==''){
-                alert("請輸入正面機率！");
+                alert("請輸入正面機率！已設定為預設機率0.5");
                 document.getElementById("head_p").focus();
+                p = 0.5
+                p_text.innerHTML=0.5; 
             }
             else{
                 p_text.innerHTML=p;     
