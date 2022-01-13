@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+        <style>
+            html,body{
+                width: 100%;
+                margin:0px;
+                font-family: "微軟正黑體";
+                background-color: #427AA1;   
+                display: flex;
+                justify-content: center; 
+                align-items: center;  
+            }
+            .outside_border{
+                width:90%;
+                height: 590px;
+                background-color: #fff;  
+                text-align: center;     
+                margin:0px;    
+            }
+                #border_title{
+                    padding-top:15px;
+                    padding-bottom:15px;
+                    background-color: #EBF2FA;
+                }
+                    #title{
+                        background-color: #05668D;
+                        margin:0px;
+                        font-size:70px;                        
+                        font-weight: bold;
+                        color:#fff;
+                    }
+                .input_num{
+                    font-size:30px;
+                    font-weight: bold;
+                    margin-top:20px
+                }
+                    #dollar_num{
+                        width:100px;
+                        font-size:30px;
+                        font-weight: bold;
+                    }
+                #btn{
+                    width:150px;
+                    height:70px;
+                    border-radius: 15px;
+                    font-size:34px;
+                    letter-spacing:1px;
+                    color:white;
+                    font-weight: bold;     
+                    padding: 1px 2px; 
+                    background-color: #427AA1; 
+                    box-shadow: 0 7px #999;
+                    cursor: pointer; 
+                }
+                    #btn:hover{
+                        background-color: #05668D;     
+                    }                
+                    #btn:active {
+                        background-color: #05668D;
+                        box-shadow: 0 5px #666;
+                        transform: translateY(4px);
+                    }
+                #dollar_num_text_heads{
+                    font-size:30px;
+                    font-weight: bold;
+                    display: inline-block;
+                    margin:10px;
+                    margin-top:20px;
+                }
+                #dollar_num_text_tails{
+                    font-size:30px;
+                    font-weight: bold;
+                    display: inline-block;
+                    margin:10px;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="outside_border" id="app">{{get_p()}}
+            <div id = "border_title"><p id="title">擲硬幣</p></div>
+            <div class="input_num">
+                請輸入硬幣數量：<input autofocus type="text" id="dollar_num" v-on:keyup.enter="text()"
+                onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+                onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}" />      
+            </div>
+            <br>
+            <input id="btn" type="button" value="開始" @click="text()" ><br>
+            <p id="dollar_num_text_heads">正面次數：</p>
+            <br>
+            <p id="dollar_num_text_tails">反面次數：</p>
+            
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#app',
+            data:{   
+                p:0,                
+            },
+            methods:{ 
+                get_p(){
+                    let self = this;
+                    axios
+                    .get('https://sheets.googleapis.com/v4/spreadsheets/1wK6sWFSGhrWdpMIFjhSGHoN9l1SSFzaL1ZmxuOb0A-Q/values/1?alt=json&key=AIzaSyBTMYnrj8_S08CTDiUhaEv5hmfGknQmkKc')
+                    .then(function(i) {
+                        self.p = i.data.values[0][0];
+                        
+                    });                  
+                },
+                text(){
+                    var heads = 0;
+                    var tails = 0;
+                    var text_heads = document.getElementById("dollar_num_text_heads");
+                    var text_tails = document.getElementById("dollar_num_text_tails");
+                    var dollar_num = document.getElementById("dollar_num").value;
+                    if((dollar_num>=0)&(dollar_num<=200)){
+                        for(i=1;i<=dollar_num;i++){
+                            var random_num = Math.random();
+                            console.log(random_num);
+                            if(random_num <= this.p){
+                                heads++;
+                            }
+                            else{
+                                tails++;
+                            }
+                        }
+                    }
+                    else{
+                        alert("請輸入1至200的整數!");
+                        document.getElementById("dollar_num").value="";
+                    }
+                    console.log(this.p);
+                    text_heads.innerHTML="正面次數："+heads+"次";
+                    text_tails.innerHTML="反面次數："+tails+"次";
+                },
+            }
+        })
+    </script>
+</html>

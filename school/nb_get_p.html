@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.1/papaparse.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+        <style>
+            html,body{
+                width:100%;
+                height:auto;
+                background-color: #427AA1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "微軟正黑體";
+            }
+            .outside_border{
+                width:90%;
+                height:590px;
+                background-color: #fff;
+                text-align: center;
+                margin:0px;
+            }
+                #border_title{
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    background-color: #EBF2FA;
+                }
+                #title{
+                    background-color: #05668D;
+                    margin: 0px;
+                    font-size: 70px;
+                    font-weight:bold;
+                    color: white;
+                }
+                    #text_02,#sector-list{
+                        font-size:26px;
+                        font-weight: bold; 
+                        margin:10px;
+                    }
+                    #p,#sector-list{
+                        width:100px;
+                        margin:0px;
+                    }
+                    #btn{
+                        width:120px;
+                        height:50px;
+                        font-size:26px;
+                        font-weight: bold;
+                        margin: 10px;
+                        border-radius: 15px;
+                        color: white;
+                        background-color: #427AA1;
+                        padding:1px 2px;
+                        box-shadow: 0 7px #999;
+                        cursor: pointer;
+                    }
+                    #btn:hover{
+                        background-color: #05668D;
+                    }
+                    #btn:active{
+                        background-color: #05668D;
+                        box-shadow: 0 5px #666;
+                        transform: translateY(4px);
+                    }
+                    #text_all{
+                        font-size: 26px;
+                        font-weight: bold;
+                        margin:10px;
+                    }
+        </style>
+    </head>
+    <body>
+        <div class="outside_border" id="app">{{get()}}
+            <div id = "border_title"><p id="title">負二項分布</p></div>
+            <p id="text_02">選取成功的次數：
+                <select id="sector-list"></select>
+            </p>
+            <input id="btn" type="button" value="開始計算" @click="start()">
+            <p id="text_all">模擬執行第_____次時為第_____次成功的機率為_____</p>
+        </div>
+    </body>
+    <script>
+        var num="<option hidden disabled selected value></option>";
+        for(var i=1;i<=50;i++){
+            num=num+'<option id='+i+'_num>'+i+'</option>';
+        }
+        var sectorSelect=document.getElementById("sector-list");
+        sectorSelect.innerHTML=num;
+
+        new Vue({
+            el: '#app',
+            data:{   
+                p:0,                
+            },
+            methods:{ 
+                get(){
+                    let self = this;
+                    axios
+                    .get('https://sheets.googleapis.com/v4/spreadsheets/1wK6sWFSGhrWdpMIFjhSGHoN9l1SSFzaL1ZmxuOb0A-Q/values/1?alt=json&key=AIzaSyBTMYnrj8_S08CTDiUhaEv5hmfGknQmkKc')
+                    .then(function(i) {
+                        self.p = i.data.values[0][0];
+                        console.log(self.p)
+                    });                  
+                },
+                start(){
+                    //r
+                    var sectorSelect=document.getElementById("sector-list");
+                    var index = sectorSelect.selectedIndex; 
+                    var r = sectorSelect.options[index].text;
+                    var p = this.p;
+
+                    var num = 0;
+                    var success = 0;
+                    var lose = 0;
+                    while(success<=r){
+                        num++;
+                        var random_num = Math.random();
+                        console.log(random_num);
+                        if(random_num <= p){
+                            success++;
+                        } 
+                        else{
+                            lose++;
+                        }
+                        if(success==r){
+                            break;
+                        }
+                    }
+                    console.log(num,r,p,success,lose)
+
+                    function fraction(n){
+                        if (n == 0){
+                            return 1;
+                        }
+                        return n * fraction(n-1);
+                    }
+
+                    function permutation (c,n){
+                        return fraction(c)/(fraction(n)*fraction(c-n));
+                    } 
+                    var ans = (Math.round(permutation(num-1,r-1))*(p**(r))*((1-p)**(num-r))).toFixed(4);
+
+                    var text_all=document.getElementById("text_all");
+                    text_all.innerHTML="模擬執行第 "+num+" 次時為第 "+r+" 次成功的機率為 "+ans;        
+                }  
+            }
+        })
+    </script>
+</html>

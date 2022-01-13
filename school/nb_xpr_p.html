@@ -1,0 +1,96 @@
+<html>
+    <head>        
+        <style>    
+        
+        </style>
+    </head>
+    <body>
+        <div class="outside_border">
+            <div id = "border_title"><p id="title">負二項分布</p></div>
+            <p>選取執行次數：
+                <select id="sector-list" onchange="n_change()"></select>
+            </p>
+            <p>輸入成功的機率：<input id="p" type="number">
+            <p>選取成功的次數：
+                <select id="sector-list-n" ></select>
+            </p>
+            <input type="button" value="開始計算" onclick="get()">
+            <p id="text_all">在成功的機率為_____下，執行第_____次時，為第_____次成功的機率為_____</p>
+            <p id="text_ex">期望值 E(X)：</p>
+            <p id="text_va">變異數 Var(X)：</p>
+        </div>
+    </body>
+    <script>
+        var num="<option hidden disabled selected value></option>";
+        for(var i=30;i<=50;i++){
+            num=num+'<option id='+i+'_num>'+i+'</option>';
+        }
+        var sectorSelect=document.getElementById("sector-list");
+        sectorSelect.innerHTML=num;
+        function n_change(){
+            //x
+            var sectorSelect=document.getElementById("sector-list");
+            var index = sectorSelect.selectedIndex; 
+            var selectedText = sectorSelect.options[index].text;
+            var n="<option hidden disabled selected value></option>";
+            for(var i=0;i<=selectedText;i++){
+                n=n+'<option id='+i+'_n>'+i+'</option>';
+            }
+            var sectorSelect_n=document.getElementById("sector-list-n");
+            sectorSelect_n.innerHTML=n;
+            //r
+            var sectorSelect_n=document.getElementById("sector-list-n");
+            var index_n = sectorSelect_n.selectedIndex; 
+            var selectedText_n = sectorSelect_n.options[index_n].text;
+        }                         
+        function get(){
+            var p = document.getElementById("p");
+            if(p.value == ""){
+                alert("請輸入數字！");
+                document.getElementById("p").focus();
+            } 
+            else if((p.value < 0)|(p.value > 1)){
+                alert("請輸入0至1的數字！");
+                document.getElementById("p").value="";
+                document.getElementById("p").focus();
+            }
+            else{
+                //x
+                var sectorSelect=document.getElementById("sector-list");
+                var index = sectorSelect.selectedIndex; 
+                var selectedText = sectorSelect.options[index].text;
+                //r
+                var sectorSelect_n=document.getElementById("sector-list-n");
+                var index_n = sectorSelect_n.selectedIndex; 
+                var selectedText_n = sectorSelect_n.options[index_n].text;
+                //p
+                var p = document.getElementById("p").value;
+                //排列組合
+                function fraction(n){
+                    if (n == 0){
+                        return 1;
+                    }
+                    return n * fraction(n-1);
+                } 
+                function permutation (c,n){
+                    return fraction(c)/(fraction(n)*fraction(c-n));
+                } 
+                var ans = (Math.round(permutation(selectedText-1,selectedText_n-1))*(p**(selectedText_n))*((1-p)**(selectedText-selectedText_n))).toFixed(4);
+                var ex = (selectedText_n*(1-p)/p).toFixed(4);
+                var va = (selectedText_n*(1-p)/(p**2)).toFixed(4);
+
+                var text_all=document.getElementById("text_all");
+                var text_ex=document.getElementById("text_ex");
+                var text_va=document.getElementById("text_va");
+                text_all.innerHTML="在成功的機率為"+p+"下，執行第"+selectedText+"次時，為第"+selectedText_n+"次成功的機率為"+ans;
+                text_ex.innerHTML="期望值 E(X)："+ex;
+                text_va.innerHTML="變異數 Var(X)："+va;
+                console.log(selectedText,selectedText_n,p);
+                console.log(Math.round(permutation(selectedText-1,selectedText_n-1)));
+                console.log(p**(selectedText_n));
+                console.log((1-p)**(selectedText-selectedText_n));
+                console.log(ans,ex,va);
+            }
+        }
+    </script>
+</html>
